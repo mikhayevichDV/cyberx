@@ -22,41 +22,77 @@ document.querySelectorAll('.header__logo, .footer__logo').forEach((el) => {
 const carousel = document.getElementById('gallery-carousel');
 if (carousel) {
   const track = carousel.querySelector('.carousel__track');
-  const slides = [...carousel.querySelectorAll('.slide')];
   const dotsWrap = carousel.querySelector('.carousel__dots');
-  let idx = 0, timer;
-  const dots = slides.map((_, i) => {
+  const real = [...track.children];
+  const n = real.length;
+  let timer, dragging = false, startX = 0, startOffset = 0, moved = 0;
+
+  // Клоны для бесшовного зацикливания: [клон последнего, 0..n-1, клон первого]
+  const firstClone = real[0].cloneNode(true);
+  const lastClone = real[n - 1].cloneNode(true);
+  firstClone.classList.remove('is-active');
+  lastClone.classList.remove('is-active');
+  track.insertBefore(lastClone, real[0]);
+  track.appendChild(firstClone);
+  const slides = [...track.children]; // n + 2
+  let pos = 1; // реальный первый слайд
+
+  const dots = real.map((_, i) => {
     const d = document.createElement('button');
     d.className = 'carousel__dot';
     d.setAttribute('aria-label', `Слайд ${i + 1}`);
-    d.addEventListener('click', () => go(i));
+    d.addEventListener('click', () => move(i + 1));
     dotsWrap.appendChild(d);
     return d;
   });
-  function offsetFor(i) {
+
+  function realIndex() {
+    if (pos === 0) return n - 1;
+    if (pos === n + 1) return 0;
+    return pos - 1;
+  }
+  function offsetFor(p) {
     const vw = carousel.clientWidth;
     const slideW = slides[0].offsetWidth;
     const gap = parseFloat(getComputedStyle(track).columnGap) || 22;
-    return (vw - slideW) / 2 - i * (slideW + gap);
+    return (vw - slideW) / 2 - p * (slideW + gap);
   }
-  function render() {
+  function paint() {
+    track.style.transform = `translateX(${offsetFor(pos)}px)`;
+    const ri = realIndex();
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === pos));
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === ri));
+  }
+  function move(toPos) { pos = toPos; track.style.transition = ''; paint(); restart(); }
+  function next() { move(pos + 1); }
+  function prev() { move(pos - 1); }
+
+  // Незаметный «перескок» с клона на настоящий слайд после доезда
+  track.addEventListener('transitionend', (e) => {
+    if (e.target !== track || e.propertyName !== 'transform') return;
+    if (pos !== n + 1 && pos !== 0) return;
+    pos = pos === n + 1 ? 1 : n;
+    track.style.transition = 'none';
+    paint();
+    void track.offsetWidth; // форсируем reflow, чтобы снять анимацию
     track.style.transition = '';
-    track.style.transform = `translateX(${offsetFor(idx)}px)`;
-    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
-  }
-  function go(i) { idx = (i + slides.length) % slides.length; render(); restart(); }
-  function restart() { clearInterval(timer); timer = setInterval(() => go(idx + 1), 7000); }
-  carousel.querySelector('.carousel__nav--next').addEventListener('click', () => go(idx + 1));
-  carousel.querySelector('.carousel__nav--prev').addEventListener('click', () => go(idx - 1));
+  });
+
+  function restart() { clearInterval(timer); timer = setInterval(next, 7000); }
+
+  carousel.querySelector('.carousel__nav--next').addEventListener('click', next);
+  carousel.querySelector('.carousel__nav--prev').addEventListener('click', prev);
   carousel.addEventListener('mouseenter', () => clearInterval(timer));
   carousel.addEventListener('mouseleave', () => { if (!dragging) restart(); });
-  window.addEventListener('resize', render);
+  window.addEventListener('resize', () => {
+    track.style.transition = 'none';
+    paint();
+    requestAnimationFrame(() => { track.style.transition = ''; });
+  });
 
   // ===== Перетаскивание мышью / пальцем =====
-  let dragging = false, startX = 0, startOffset = 0, moved = 0;
   track.addEventListener('pointerdown', (e) => {
-    dragging = true; startX = e.clientX; startOffset = offsetFor(idx); moved = 0;
+    dragging = true; startX = e.clientX; startOffset = offsetFor(pos); moved = 0;
     track.style.transition = 'none';
     clearInterval(timer);
     carousel.classList.add('is-grabbing');
@@ -71,15 +107,16 @@ if (carousel) {
     if (!dragging) return;
     dragging = false;
     carousel.classList.remove('is-grabbing');
+    track.style.transition = '';
     const threshold = slides[0].offsetWidth * 0.15;
-    if (moved < -threshold) go(idx + 1);
-    else if (moved > threshold) go(idx - 1);
-    else { render(); restart(); }
+    if (moved < -threshold) next();
+    else if (moved > threshold) prev();
+    else { paint(); restart(); }
   }
   track.addEventListener('pointerup', endDrag);
   track.addEventListener('pointercancel', endDrag);
 
-  render();
+  paint();
   restart();
 }
 
