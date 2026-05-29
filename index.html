@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Компьютерный клуб в Минске — CyberX</title>
+  <meta name="description" content="CyberX — современный киберспортивный клуб в Минске. Мощные ПК, PS5, буткемп-зоны. Работаем 24/7. ул. Скрипникова, 12А." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <nav class="nav" id="nav">
+        <a href="#about">О клубе</a>
+        <a href="#pricing">Цены</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a href="#top" class="header__logo"><img src="assets/header-logo.webp" alt="CyberX" /></a>
+      <div class="header__contacts">
+        <a href="tel:0000000" class="header__phone">
+          <span class="ic">📞</span> 0000000
+        </a>
+        <span class="header__hours"><span class="ic">🕐</span> 24/7</span>
+      </div>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__glow" aria-hidden="true">
+      <img src="assets/Ellipse-pink.webp" class="ellipse ellipse--1" alt="" />
+      <img src="assets/Ellipse-aqua.webp" class="ellipse ellipse--2" alt="" />
+      <img src="assets/Ellipse-blue.webp" class="ellipse ellipse--3" alt="" />
+    </div>
+    <div class="container hero__inner">
+      <img src="assets/Xsx.svg" class="hero__wordmark" alt="CyberX Community" />
+      <p class="hero__text">CyberX — уникальный компьютерный клуб в Минске: мощное железо, топовые девайсы и атмосфера, которая настраивает на победу.</p>
+      <a href="#about" class="hero__scroll">
+        <span class="hero__arrow" aria-hidden="true">↘</span>
+        О КЛУБЕ
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Diagonal tickers ===== -->
+  <div class="diag" aria-hidden="true">
+    <div class="diag__strip diag__strip--blue">
+      <div class="diag__track">
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+      </div>
+    </div>
+    <div class="diag__strip diag__strip--dark">
+      <div class="diag__track diag__track--rev">
+        <span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span><span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span>
+        <span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span><span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span>
+        <span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span><span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== About ===== -->
+  <section class="section about" id="about">
+    <img src="assets/Xsx.svg" class="about__watermark" alt="" aria-hidden="true" />
+    <div class="container about__inner">
+      <h2 class="huge-title reveal">О клубе</h2>
+      <div class="about__content reveal" data-delay="1">
+        <h3 class="about__subtitle">Лучшее киберпространство в Минске</h3>
+        <p>Самый современный киберспортивный клуб, который работает круглосуточно, 24/7, и ставит сервис на первое место.</p>
+        <p>Мы хотим, чтобы вы были для нас не просто гостем, а частью CyberX Community. Поэтому собрали команду, которая в первую очередь заботится о вас и учитывает все ваши пожелания.</p>
+        <div class="about__specs">
+          <div class="spec"><b>30 Standart / 10 VIP</b><span>игровых ПК</span></div>
+          <div class="spec"><b>2 зоны BOOTCAMP</b><span>для тренировок</span></div>
+          <div class="spec"><b>2 зоны PS5</b><span>PlayStation 5</span></div>
+          <div class="spec"><b>1 зона VIP PS5</b><span>для компании</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container about__hardware reveal">
+      <div class="hwcard"><b>Мониторы</b><span>ASUS TUF Gaming — 260 Гц<br />BenQ Zowie XL2540K — 240 Гц</span></div>
+      <div class="hwcard"><b>Видеокарты</b><span>Standart — RTX 4060 Ti<br />VIP — RTX 4070</span></div>
+      <div class="hwcard"><b>Процессор</b><span>Intel Core i5-13400F</span></div>
+    </div>
+  </section>
+
+  <!-- ===== Pricing ===== -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <h2 class="huge-title huge-title--right reveal">Прайс-лист</h2>
+
+      <div class="ptable reveal">
+        <div class="ptable__head">
+          <div class="ptable__corner"></div>
+          <div class="ptable__group">
+            <span class="ptable__zone">Comfort</span>
+            <div class="ptable__days"><span>Пн&nbsp;–&nbsp;Чт</span><span>Пт&nbsp;–&nbsp;Вс</span></div>
+          </div>
+          <div class="ptable__group">
+            <span class="ptable__zone">Bootcamp</span>
+            <div class="ptable__days"><span>Пн&nbsp;–&nbsp;Чт</span><span>Пт&nbsp;–&nbsp;Вс</span></div>
+          </div>
+        </div>
+        <div class="ptable__rows">
+          <div class="prow"><div class="prow__label">1 час<small>с 8 до 15</small></div><b>5</b><b>6</b><b>6</b><b>7</b></div>
+          <div class="prow"><div class="prow__label">1 час<small>с 15 до 8</small></div><b>7</b><b>8</b><b>8</b><b>10</b></div>
+          <div class="prow"><div class="prow__label">3 часа</div><b>15</b><b>19</b><b>19</b><b>21</b></div>
+          <div class="prow"><div class="prow__label">5 часов</div><b>23</b><b>29</b><b>29</b><b>29</b></div>
+          <div class="prow"><div class="prow__label">Ночь<small>с 22 до 8</small></div><b>27</b><b>29</b><b>29</b><b>35</b></div>
+          <div class="prow"><div class="prow__label">Сутки</div><b>45</b><b>55</b><b>55</b><b>60</b></div>
+        </div>
+      </div>
+
+      <div class="ptable ptable--tv reveal" data-delay="1">
+        <div class="ptable__head">
+          <div class="ptable__corner"></div>
+          <div class="ptable__group">
+            <span class="ptable__zone">TV 65"</span>
+            <div class="ptable__days ptable__days--one"><span>Пн&nbsp;–&nbsp;Вс</span></div>
+          </div>
+          <div class="ptable__group">
+            <span class="ptable__zone">TV 75"</span>
+            <div class="ptable__days"><span>Пн&nbsp;–&nbsp;Чт</span><span>Пт&nbsp;–&nbsp;Вс</span></div>
+          </div>
+        </div>
+        <div class="ptable__rows">
+          <div class="prow prow--tv"><div class="prow__label">1 час</div><b>10</b><b>20</b><b>20</b></div>
+          <div class="prow prow--tv"><div class="prow__label">3 часа</div><b>30</b><b>35</b><b>40</b></div>
+          <div class="prow prow--tv"><div class="prow__label">5 часов</div><b>35</b><b>45</b><b>55</b></div>
+        </div>
+      </div>
+      <p class="pricing__note">Цены указаны в BYN. Точные тарифы и акции уточняйте у администратора.</p>
+    </div>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section class="section gallery" id="gallery">
+    <div class="container gallery__top">
+      <a href="#booking" class="hero__scroll hero__scroll--sm"><span class="hero__arrow">↘</span> ЗАБРОНИРОВАТЬ</a>
+    </div>
+    <h2 class="huge-title huge-title--center reveal">Галерея</h2>
+    <div class="container">
+      <div class="masonry">
+        <div class="ph ph--1 reveal" data-img="assets/gallery-1.jpg"><span>Лаунж-зона</span></div>
+        <div class="ph ph--2 reveal" data-delay="1" data-img="assets/gallery-2.jpg"><span>Игровой зал</span></div>
+        <div class="ph ph--3 reveal" data-delay="2" data-img="assets/gallery-3.jpg"><span>Буткемп</span></div>
+        <div class="ph ph--4 reveal" data-img="assets/gallery-4.jpg"><span>VIP-зона</span></div>
+        <div class="ph ph--5 reveal" data-delay="1" data-img="assets/gallery-5.jpg"><span>PS5</span></div>
+        <div class="ph ph--6 reveal" data-delay="2" data-img="assets/gallery-6.jpg"><span>Атмосфера</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Diagonal tickers ===== -->
+  <div class="diag" aria-hidden="true">
+    <div class="diag__strip diag__strip--blue">
+      <div class="diag__track">
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+        <span>GAMING CLUB&nbsp;·&nbsp;</span><span>GAMING CLUB&nbsp;·&nbsp;</span>
+      </div>
+    </div>
+    <div class="diag__strip diag__strip--dark">
+      <div class="diag__track diag__track--rev">
+        <span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span><span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span>
+        <span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span><span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span>
+        <span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span><span>CYBER<b>X</b>COMMUNITY&nbsp;·&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Contacts ===== -->
+  <section class="section contacts" id="contacts">
+    <div class="container contacts__inner">
+      <div class="contacts__map reveal">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?ll=27.4222668%2C53.8918131&z=17&pt=27.4222668%2C53.8918131%2Cpm2rdm"
+          width="100%" height="380" frameborder="0" allowfullscreen title="Карта CyberX"></iframe>
+      </div>
+      <div class="contacts__info reveal" data-delay="1">
+        <h2 class="huge-title">Контакты</h2>
+        <ul class="contacts__list">
+          <li><span class="ic">📍</span> г. Минск, ул. Скрипникова, 12А</li>
+          <li><span class="ic">📞</span> <a href="tel:0000000">0000000</a></li>
+          <li><span class="ic">🕐</span> Работаем круглосуточно, 24/7</li>
+        </ul>
+        <p class="contacts__note">Вы легко найдёте нас в центре Минска — удобный подъезд и парковка рядом.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Booking ===== -->
+  <section class="section booking" id="booking">
+    <img src="assets/Xsx.svg" class="booking__watermark" alt="" aria-hidden="true" />
+    <div class="container booking__inner">
+      <div class="booking__left reveal">
+        <h2 class="huge-title">Забронировать</h2>
+        <p class="booking__lead">Посмотреть количество свободных мест и забронировать удобное время для себя и друзей вы можете в приложении CYBERX.</p>
+        <div class="booking__apps">
+          <a href="https://play.google.com/store/apps/details?id=ru.langame.cyberx" class="store" target="_blank" rel="noopener">
+            <span class="store__ic">▶</span>
+            <span class="store__txt"><small>Скачать в</small><b>Google Play</b></span>
+          </a>
+          <a href="#" class="store">
+            <span class="store__ic"></span>
+            <span class="store__txt"><small>Доступно в</small><b>App Store</b></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="booking__phone reveal" data-delay="1">
+        <div class="phone">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="appbar"><span>‹</span> Выбрать время</div>
+            <div class="venue">
+              <div class="venue__img"></div>
+              <div class="venue__info">
+                <b>✕ CyberX Минск</b>
+                <span>📍 улица Скрипникова, 12А</span>
+                <div class="venue__row"><em>от 5 BYN/ч</em><span>5 ★</span></div>
+              </div>
+            </div>
+            <div class="tabs"><span class="tabs__on">Почасовой тариф</span><span>Пакеты времени</span></div>
+            <p class="apphint">Выберите интервал времени<br />для бронирования места</p>
+            <div class="timepick">
+              <div class="timepick__col"><small>21 октября</small><b>17:00</b></div>
+              <span class="timepick__sep">до</span>
+              <div class="timepick__col"><small>21 октября</small><b>22:00</b></div>
+            </div>
+            <button class="appbtn">Далее</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#top" class="footer__logo"><img src="assets/Xsx.svg" alt="CyberX Community" /></a>
+      <nav class="footer__nav">
+        <a href="#about">О клубе</a><a href="#pricing">Цены</a>
+        <a href="#gallery">Галерея</a><a href="#contacts">Контакты</a>
+      </nav>
+      <a href="tel:0000000" class="footer__phone"><span class="ic">📞</span> 0000000</a>
+    </div>
+    <div class="container footer__bottom">Все права защищены — 2025 © CyberXCommunity, Минск</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
