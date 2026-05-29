@@ -307,16 +307,15 @@ body::after {
 
 /* ===== Карусель галереи ===== */
 .carousel { position: relative; max-width: 1000px; margin: 0 auto; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
-.carousel__viewport { position: relative; aspect-ratio: 16 / 9; }
+.carousel__viewport {
+  position: relative; aspect-ratio: 16 / 9;
+  background: radial-gradient(circle at 30% 20%, rgba(60,230,200,0.16), transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(255,50,80,0.2), transparent 60%), var(--panel);
+}
 .slide {
   position: absolute; inset: 0; opacity: 1; z-index: 0;
   background-size: cover; background-position: center;
   display: flex; align-items: flex-end; padding: 1.6rem;
-}
-.slide::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(circle at 30% 20%, rgba(60,230,200,0.16), transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(255,50,80,0.2), transparent 60%), var(--panel);
 }
 .slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.7)); }
 .slide.is-active { z-index: 2; animation: slideFade 0.8s ease; }
