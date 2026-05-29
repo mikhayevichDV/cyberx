@@ -123,28 +123,33 @@ body::after {
   animation-delay: 0.5s;
 }
 .hero__arrow {
-  display: grid; place-items: center; width: 56px; height: 56px;
-  border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; font-size: 1.4rem;
-  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  width: 64px; height: 64px; flex-shrink: 0; color: #fff;
+  transition: transform 0.25s, color 0.25s;
 }
-.hero__scroll:hover .hero__arrow { background: var(--accent); border-color: var(--accent); transform: translateY(3px); }
+.hero__scroll:hover .hero__arrow { transform: translate(5px, 5px); color: var(--accent); }
 .hero__scroll--sm { font-size: 0.85rem; }
-.hero__scroll--sm .hero__arrow { width: 46px; height: 46px; font-size: 1.2rem; }
+.hero__scroll--sm .hero__arrow { width: 48px; height: 48px; }
 @keyframes heroIn { from { opacity: 0; transform: translateY(28px);} to { opacity: 1; transform: none; } }
 
 /* ===== Diagonal tickers ===== */
 .diag { position: relative; height: 150px; margin: -30px 0; z-index: 5; pointer-events: none; }
-.diag__strip { position: absolute; left: -10%; width: 120%; overflow: hidden; white-space: nowrap; padding: 12px 0; }
-.diag__strip--blue { top: 40px; transform: rotate(-3.5deg); background: var(--blue); }
-.diag__strip--dark { top: 64px; transform: rotate(3.2deg); background: #100309; border-block: 1px solid var(--line); }
-.diag__track {
-  display: inline-flex; font-weight: 800; font-style: italic; font-size: 1.3rem;
-  letter-spacing: 0.04em; text-transform: uppercase; animation: scrollL 24s linear infinite;
+.diag__strip {
+  position: absolute; left: -12%; width: 124%; height: 46px;
+  background-repeat: repeat-x;
+  background-position: 0 50%;
 }
-.diag__track--rev { animation: scrollR 28s linear infinite; }
-.diag__track b { color: var(--accent); }
-@keyframes scrollL { from{transform:translateX(0);} to{transform:translateX(-50%);} }
-@keyframes scrollR { from{transform:translateX(-50%);} to{transform:translateX(0);} }
+.diag__strip--blue {
+  top: 40px; transform: rotate(-3.5deg); background-color: var(--blue);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='46'%3E%3Ctext x='4' y='31' font-family='Montserrat,Arial,sans-serif' font-size='20' font-weight='800' font-style='italic' fill='%23ffffff'%3EGAMING CLUB %E2%80%A2%3C/text%3E%3C/svg%3E");
+  animation: diagScroll 12s linear infinite;
+}
+.diag__strip--dark {
+  top: 64px; transform: rotate(3.2deg); background-color: #100309; border-block: 1px solid var(--line);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='46'%3E%3Ctext y='31' font-family='Montserrat,Arial,sans-serif' font-size='20' font-weight='800' font-style='italic'%3E%3Ctspan x='4' fill='%23ffffff'%3ECYBER%3C/tspan%3E%3Ctspan fill='%23ff3250'%3EX%3C/tspan%3E%3Ctspan fill='%23ffffff'%3ECOMMUNITY %E2%80%A2%3C/tspan%3E%3C/text%3E%3C/svg%3E");
+  animation: diagScrollRev 16s linear infinite;
+}
+@keyframes diagScroll { from { background-position: 0 50%; } to { background-position: -200px 50%; } }
+@keyframes diagScrollRev { from { background-position: 0 50%; } to { background-position: 250px 50%; } }
 
 /* ===== Sections base ===== */
 .section { position: relative; padding: clamp(4rem, 9vw, 7rem) 0; }
@@ -290,37 +295,74 @@ body::after {
 .reveal[data-delay="2"] { transition-delay: 0.24s; }
 
 /* ===== Responsive ===== */
+
+/* Заголовки никогда не вылезают за край */
+.huge-title { overflow-wrap: break-word; word-break: break-word; hyphens: auto; }
+
+/* Планшеты / ноутбуки */
+@media (max-width: 1100px) {
+  .header__hours { display: none; }
+  .nav { gap: 1.3rem; }
+}
+
 @media (max-width: 980px) {
   .about__inner, .contacts__inner, .booking__inner { grid-template-columns: 1fr; }
   .about__hardware { grid-template-columns: 1fr; }
-  .ptable__head { grid-template-columns: 120px 1fr 1fr; }
-  .prow { grid-template-columns: 120px 1fr 1fr 1fr 1fr; gap: 0.5rem; }
-  .prow--tv { grid-template-columns: 120px 1fr 1fr 1fr; }
+  .about__watermark { width: 70vw; opacity: 0.04; }
+  .ptable__head { grid-template-columns: 110px 1fr 1fr; }
+  .prow { grid-template-columns: 110px 1fr 1fr 1fr 1fr; gap: 0.5rem; }
+  .prow--tv { grid-template-columns: 110px 1fr 1fr 1fr; }
   .prow b { font-size: 1.1rem; padding: 0.7rem 0; }
   .masonry { columns: 2; }
-  .booking__phone { order: -1; }
+  .booking__inner { gap: 2.5rem; }
+  .booking__phone { order: 2; }
+  .contacts__inner { gap: 2rem; }
 }
+
+/* Планшеты-портрет / большие телефоны */
 @media (max-width: 720px) {
   .nav {
     position: fixed; inset: 78px 0 auto 0; flex-direction: column; background: var(--bg-2);
     border-bottom: 1px solid var(--line); padding: 1.5rem 6%; gap: 1.1rem;
-    transform: translateY(-130%); transition: transform 0.3s;
+    transform: translateY(-130%); transition: transform 0.3s; z-index: 55;
   }
   .nav.open { transform: translateY(0); }
   .header__contacts .header__phone { display: none; }
   .burger { display: flex; order: 3; margin-left: auto; }
   .header__logo { left: 1rem; transform: none; }
   .form__row { grid-template-columns: 1fr; }
-  .ptable { overflow-x: auto; }
-  .huge-title--right, .huge-title--center { text-align: left; }
+  .ptable { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ptable__head, .prow { min-width: 460px; }
+  .huge-title { text-align: center; }
+  .huge-title--right { text-align: center; }
+  .footer__inner { flex-direction: column; align-items: center; text-align: center; gap: 1.8rem; }
+  .footer__nav { flex-direction: column; align-items: center; gap: 1.3rem; }
+  .section { padding: clamp(3rem, 9vw, 5rem) 0; }
 }
+
+/* Телефоны */
 @media (max-width: 560px) {
   .masonry { columns: 1; }
   .ptable__zone { font-size: 1.1rem; }
+  .about__specs { grid-template-columns: 1fr; gap: 1.2rem; }
+  .hero__arrow { width: 48px; height: 48px; }
+  .booking__apps { gap: 0.7rem; }
+  .store { padding: 0.55rem 1rem; }
+  .contacts__map iframe { height: 300px; }
+  .phone { width: min(290px, 86vw); }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 400px) {
+  .huge-title { font-size: 2.1rem; }
+  .hero__text { font-size: 1rem; }
+  .header__hours { display: none; }
+  .store__txt b { font-size: 1rem; }
+  .ptable__head, .prow { min-width: 420px; }
 }
 
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .ellipse, .diag__track, .hero__inner > * { animation: none; }
+  .ellipse, .diag__strip, .hero__inner > * { animation: none; }
 }
