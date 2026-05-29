@@ -13,9 +13,10 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <span id="top"></span>
 
   <!-- ===== Header ===== -->
-  <header class="header" id="top">
+  <header class="header">
     <div class="container header__inner">
       <nav class="nav" id="nav">
         <a href="#about">О клубе</a>
@@ -30,6 +31,7 @@
         </a>
         <span class="header__hours"><span class="ic">🕐</span> 24/7</span>
       </div>
+      <a href="https://langame.ru/799459076_computerniy_club_cyberx-skripnikova_minsk" class="btn btn--accent header__cta" target="_blank" rel="noopener">Забронировать</a>
       <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -146,13 +148,18 @@
     </div>
     <h2 class="huge-title huge-title--center reveal">Галерея</h2>
     <div class="container">
-      <div class="masonry">
-        <div class="ph ph--1 reveal" data-img="assets/gallery-1.jpg"><span>Лаунж-зона</span></div>
-        <div class="ph ph--2 reveal" data-delay="1" data-img="assets/gallery-2.jpg"><span>Игровой зал</span></div>
-        <div class="ph ph--3 reveal" data-delay="2" data-img="assets/gallery-3.jpg"><span>Буткемп</span></div>
-        <div class="ph ph--4 reveal" data-img="assets/gallery-4.jpg"><span>VIP-зона</span></div>
-        <div class="ph ph--5 reveal" data-delay="1" data-img="assets/gallery-5.jpg"><span>PS5</span></div>
-        <div class="ph ph--6 reveal" data-delay="2" data-img="assets/gallery-6.jpg"><span>Атмосфера</span></div>
+      <div class="carousel reveal" id="gallery-carousel">
+        <div class="carousel__viewport">
+          <div class="slide is-active" data-img="assets/vanu4ka.jpg"><span>Лаунж-зона</span></div>
+          <div class="slide" data-img="assets/vanu4ka.jpg"><span>Игровой зал</span></div>
+          <div class="slide" data-img="assets/vanu4ka.jpg"><span>Буткемп</span></div>
+          <div class="slide" data-img="assets/vanu4ka.jpg"><span>VIP-зона</span></div>
+          <div class="slide" data-img="assets/vanu4ka.jpg"><span>PS5</span></div>
+          <div class="slide" data-img="assets/vanu4ka.jpg"><span>Атмосфера</span></div>
+        </div>
+        <button class="carousel__nav carousel__nav--prev" aria-label="Назад">‹</button>
+        <button class="carousel__nav carousel__nav--next" aria-label="Вперёд">›</button>
+        <div class="carousel__dots" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -207,41 +214,25 @@
             <span class="store__txt"><small>Доступно в</small><b>App Store</b></span>
           </a>
         </div>
-        <div class="booking__qr">
-          <img src="assets/app-qr.svg" alt="QR-код для бронирования CyberX" />
-          <p>Наведи камеру телефона<br />и забронируй место за пару касаний</p>
-        </div>
       </div>
 
       <div class="booking__phone reveal" data-delay="1">
         <div class="phone">
-          <div class="phone__notch"></div>
+          <div class="phone__island"></div>
           <div class="phone__screen">
-            <div class="appbar"><span>‹</span> Выбрать время</div>
+            <div class="appbar"><span>‹</span> Бронирование</div>
             <div class="venue">
               <div class="venue__img"></div>
               <div class="venue__info">
-                <b>✕ CyberX Минск</b>
+                <b><span class="venue__x">✕</span> CyberX Минск</b>
                 <span>📍 улица Скрипникова, 12А</span>
                 <div class="venue__row"><em>от 5 BYN/ч</em><span>5 ★</span></div>
               </div>
             </div>
-            <div class="tabs"><span class="tabs__on">Почасовой тариф</span><span>Пакеты времени</span></div>
-            <p class="apphint">Выберите интервал времени<br />для бронирования места</p>
-            <div class="drum">
-              <div class="drum__r drum__r--f"><span>16:00</span><i></i><span>21:00</span></div>
-              <div class="drum__r drum__r--n"><span>16:30</span><i></i><span>21:30</span></div>
-              <div class="drum__sel">
-                <span class="drum__t"><small>21 октября</small><b>17:00</b></span>
-                <i class="drum__do">до</i>
-                <span class="drum__t"><small>21 октября</small><b>22:00</b></span>
-              </div>
-              <div class="drum__r drum__r--n"><span>17:30</span><i></i><span>22:30</span></div>
-              <div class="drum__r drum__r--f"><span>18:00</span><i></i><span>23:00</span></div>
-            </div>
-            <p class="drumhint">* Зажмите барабан, чтобы выбрать точное время</p>
-            <button class="appbtn">Далее</button>
-            <div class="phone__nav"><span>|||</span><span>○</span><span>‹</span></div>
+            <div class="qrbox"><img src="assets/app-qr.svg" alt="QR для бронирования CyberX" /></div>
+            <p class="qrcaption">Наведи камеру телефона<br />и забронируй место в приложении CyberX</p>
+            <a href="https://langame.ru/799459076_computerniy_club_cyberx-skripnikova_minsk" class="appbtn" target="_blank" rel="noopener">Забронировать</a>
+            <div class="phone__home"></div>
           </div>
         </div>
       </div>
