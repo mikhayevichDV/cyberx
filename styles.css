@@ -272,7 +272,7 @@ body::after {
 .venue__img { width: 64px; height: 64px; border-radius: 10px; flex-shrink: 0; background: radial-gradient(circle at 40% 30%, #ff3250, transparent 60%), linear-gradient(160deg, #9747ff, #2b3df5); }
 .venue__info { display: flex; flex-direction: column; gap: 0.15rem; }
 .venue__info b { font-size: 0.85rem; }
-.venue__x { color: var(--accent); }
+.venue__info .venue__x { color: var(--accent); }
 .venue__info span { color: var(--muted); font-size: 0.7rem; }
 .venue__row { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.15rem; }
 .venue__row em { color: var(--accent); font-style: normal; font-weight: 700; font-size: 0.72rem; }
