@@ -21,6 +21,7 @@ document.querySelectorAll('.header__logo, .footer__logo').forEach((el) => {
 // ===== Карусель галереи (автопрокрутка раз в 7 сек) =====
 const carousel = document.getElementById('gallery-carousel');
 if (carousel) {
+  const track = carousel.querySelector('.carousel__track');
   const slides = [...carousel.querySelectorAll('.slide')];
   const dotsWrap = carousel.querySelector('.carousel__dots');
   let idx = 0, timer;
@@ -32,7 +33,15 @@ if (carousel) {
     dotsWrap.appendChild(d);
     return d;
   });
+  function offsetFor(i) {
+    const vw = carousel.clientWidth;
+    const slideW = slides[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 22;
+    return (vw - slideW) / 2 - i * (slideW + gap);
+  }
   function render() {
+    track.style.transition = '';
+    track.style.transform = `translateX(${offsetFor(idx)}px)`;
     slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
     dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
   }
@@ -41,10 +50,48 @@ if (carousel) {
   carousel.querySelector('.carousel__nav--next').addEventListener('click', () => go(idx + 1));
   carousel.querySelector('.carousel__nav--prev').addEventListener('click', () => go(idx - 1));
   carousel.addEventListener('mouseenter', () => clearInterval(timer));
-  carousel.addEventListener('mouseleave', restart);
+  carousel.addEventListener('mouseleave', () => { if (!dragging) restart(); });
+  window.addEventListener('resize', render);
+
+  // ===== Перетаскивание мышью / пальцем =====
+  let dragging = false, startX = 0, startOffset = 0, moved = 0;
+  track.addEventListener('pointerdown', (e) => {
+    dragging = true; startX = e.clientX; startOffset = offsetFor(idx); moved = 0;
+    track.style.transition = 'none';
+    clearInterval(timer);
+    carousel.classList.add('is-grabbing');
+    track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    moved = e.clientX - startX;
+    track.style.transform = `translateX(${startOffset + moved}px)`;
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    carousel.classList.remove('is-grabbing');
+    const threshold = slides[0].offsetWidth * 0.15;
+    if (moved < -threshold) go(idx + 1);
+    else if (moved > threshold) go(idx - 1);
+    else { render(); restart(); }
+  }
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+
   render();
   restart();
 }
+
+// ===== Клик по прайс-листу → блок бронирования =====
+const bookingSection = document.getElementById('booking');
+document.querySelectorAll('#pricing .ptable').forEach((table) => {
+  table.style.cursor = 'pointer';
+  table.setAttribute('title', 'Забронировать');
+  table.addEventListener('click', () => {
+    if (bookingSection) bookingSection.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
 // ===== Header shadow on scroll =====
 const header = document.querySelector('.header');
