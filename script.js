@@ -120,12 +120,12 @@ if (carousel) {
   restart();
 }
 
-// ===== Клик по прайс-листу → блок бронирования =====
+// ===== Клик по ячейке-кнопке прайса → блок бронирования =====
 const bookingSection = document.getElementById('booking');
-document.querySelectorAll('#pricing .ptable').forEach((table) => {
-  table.style.cursor = 'pointer';
-  table.setAttribute('title', 'Забронировать');
-  table.addEventListener('click', () => {
+document.querySelectorAll('#pricing .prow b, #pricing .tvrent__cell').forEach((cell) => {
+  cell.style.cursor = 'pointer';
+  cell.setAttribute('title', 'Забронировать');
+  cell.addEventListener('click', () => {
     if (bookingSection) bookingSection.scrollIntoView({ behavior: 'smooth' });
   });
 });
