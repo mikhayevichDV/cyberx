@@ -1,0 +1,10 @@
+# Статический сайт без сборки — публикуем корень проекта как есть
+[build]
+  publish = "."
+  command = ""
+
+# Долгий кеш для статических ассетов
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
