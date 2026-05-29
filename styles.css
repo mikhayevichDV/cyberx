@@ -155,7 +155,7 @@ body::after {
 .section { position: relative; padding: clamp(4rem, 9vw, 7rem) 0; }
 
 /* ===== About ===== */
-.about { background: linear-gradient(160deg, #0e0000 0%, #1a0530 55%, #0e0010 100%); overflow: hidden; }
+.about { background: linear-gradient(180deg, #0e0000 0%, #1a0530 55%, #160418 100%); overflow: hidden; }
 .about__watermark { position: absolute; left: -6%; top: 30%; width: 46vw; opacity: 0.05; filter: grayscale(1); pointer-events: none; }
 .about__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; position: relative; z-index: 1; }
 .about__subtitle { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2rem; }
@@ -169,7 +169,7 @@ body::after {
 .hwcard span { color: var(--muted); }
 
 /* ===== Pricing ===== */
-.pricing { background: linear-gradient(160deg, #0e0010 0%, #1c0a3a 50%, #170016 100%); }
+.pricing { background: linear-gradient(180deg, #160418 0%, #1c0a3a 50%, #130316 100%); }
 .ptable { margin-top: 2.5rem; }
 .ptable--tv { margin-top: 1.6rem; }
 .ptable__head { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 1rem; align-items: end; margin-bottom: 0.8rem; }
@@ -193,7 +193,7 @@ body::after {
 .pricing__note { text-align: center; color: var(--muted); margin-top: 2rem; font-size: 0.9rem; }
 
 /* ===== Gallery ===== */
-.gallery { background: linear-gradient(160deg, #170016 0%, #0e0008 100%); }
+.gallery { background: linear-gradient(180deg, #130316 0%, #0e0008 100%); }
 .gallery__top { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
 .huge-title--center { margin-bottom: 3rem; }
 .masonry { columns: 3; column-gap: 1.2rem; }
@@ -217,7 +217,7 @@ body::after {
 .ph:hover { transform: rotate(0deg) scale(1.02); }
 
 /* ===== Contacts ===== */
-.contacts { background: linear-gradient(160deg, #0e0008 0%, #1a0530 60%, #0e0010 100%); }
+.contacts { background: linear-gradient(180deg, #0e0008 0%, #1a0530 60%, #140418 100%); }
 .contacts__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 .contacts__map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); line-height: 0; }
 /* Затемняем карту под тёмный стиль сайта (без ключа Yandex API) */
@@ -230,7 +230,8 @@ body::after {
 .contacts__note { color: var(--muted); max-width: 420px; }
 
 /* ===== Booking ===== */
-.booking { background: linear-gradient(160deg, #0a0612 0%, #0c1430 55%, #0a0610 100%); overflow: hidden; }
+.booking { background: linear-gradient(180deg, #140418 0%, #120a32 55%, #0a0610 100%); overflow: hidden; }
+.booking .huge-title { white-space: nowrap; word-break: normal; hyphens: none; font-size: clamp(1.9rem, 8.5vw, 5.5rem); }
 .booking__watermark { position: absolute; right: -4%; bottom: -6%; width: 42vw; opacity: 0.06; filter: grayscale(1); pointer-events: none; }
 .booking__inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
 .booking__lead { color: var(--muted); margin: 1.6rem 0 2.4rem; max-width: 440px; font-size: 1.1rem; }
@@ -245,6 +246,9 @@ body::after {
 .store__txt { display: flex; flex-direction: column; line-height: 1.15; }
 .store__txt small { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: #bbb; }
 .store__txt b { font-size: 1.1rem; }
+.booking__qr { display: flex; align-items: center; gap: 1.1rem; margin-top: 1.8rem; }
+.booking__qr img { width: 116px; height: 116px; background: #fff; border-radius: 14px; padding: 9px; flex-shrink: 0; }
+.booking__qr p { color: var(--muted); font-size: 0.98rem; max-width: 240px; }
 
 /* Phone mock with app UI */
 .booking__phone { display: flex; justify-content: center; }
@@ -269,16 +273,29 @@ body::after {
 .tabs { display: flex; gap: 0.4rem; background: #16161e; border-radius: 999px; padding: 4px; }
 .tabs span { flex: 1; text-align: center; padding: 0.45rem; border-radius: 999px; color: var(--muted); font-size: 0.72rem; }
 .tabs__on { background: var(--accent); color: #fff !important; font-weight: 600; }
-.apphint { text-align: center; color: var(--muted); font-size: 0.72rem; margin: 0.3rem 0; }
-.timepick { display: flex; align-items: center; gap: 0.5rem; background: #16161e; border: 1px solid #2a2a32; border-radius: 12px; padding: 0.7rem; }
-.timepick__col { flex: 1; text-align: center; }
-.timepick__col small { display: block; color: var(--muted); font-size: 0.6rem; }
-.timepick__col b { font-size: 1.3rem; }
-.timepick__sep { color: var(--muted); font-size: 0.7rem; }
-.appbtn { margin-top: auto; margin-bottom: 0.6rem; border: none; border-radius: 999px; padding: 0.85rem; font-family: inherit; font-weight: 700; color: #fff; background: var(--grad); cursor: pointer; }
+.apphint { text-align: center; color: var(--muted); font-size: 0.72rem; margin: 0.2rem 0; }
+
+/* Барабан выбора времени */
+.drum { display: flex; flex-direction: column; gap: 0.1rem; }
+.drum__r { display: grid; grid-template-columns: 1fr 40px 1fr; text-align: center; line-height: 1.3; }
+.drum__r span { font-size: 0.92rem; font-weight: 500; }
+.drum__r--f span { color: rgba(255,255,255,0.18); }
+.drum__r--n span { color: rgba(255,255,255,0.4); }
+.drum__sel {
+  display: grid; grid-template-columns: 1fr 40px 1fr; align-items: center;
+  background: #1b1b24; border: 1px solid #33333d; border-radius: 12px;
+  padding: 0.45rem 0; margin: 0.25rem 0;
+}
+.drum__t { text-align: center; }
+.drum__t small { display: block; color: var(--muted); font-size: 0.58rem; }
+.drum__t b { font-size: 1.25rem; }
+.drum__do { color: var(--muted); font-size: 0.68rem; font-style: normal; text-align: center; }
+.drumhint { text-align: center; color: rgba(255,255,255,0.4); font-size: 0.58rem; margin: 0.4rem 0; }
+.appbtn { margin-top: auto; border: none; border-radius: 999px; padding: 0.8rem; font-family: inherit; font-weight: 700; color: #fff; background: var(--grad); cursor: pointer; }
+.phone__nav { display: flex; justify-content: space-around; align-items: center; padding: 0.5rem 1.5rem 0.1rem; color: rgba(255,255,255,0.45); font-size: 0.9rem; letter-spacing: 1px; }
 
 /* ===== Footer ===== */
-.footer { background: #08040a; border-top: 1px solid var(--line); padding-top: 2.2rem; }
+.footer { background: #0a0610; border-top: 1px solid var(--line); padding-top: 2.2rem; }
 .footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding-bottom: 1.8rem; }
 .footer__logo img { height: 40px; width: auto; display: block; }
 .footer__nav { display: flex; gap: 2rem; }
